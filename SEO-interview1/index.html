@@ -385,11 +385,207 @@
   }
 
   .score-dot {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     border: 2px solid var(--border);
     border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: transparent;
+    user-select: none;
   }
+
+  .score-dot:hover {
+    border-color: var(--accent);
+    transform: scale(1.15);
+  }
+
+  .score-dot.filled {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  .score-dot.filled.low { background: var(--red); border-color: var(--red); }
+  .score-dot.filled.mid { background: var(--orange); border-color: var(--orange); }
+  .score-dot.filled.high { background: var(--green); border-color: var(--green); }
+
+  /* Notes textarea in scorecard */
+  .score-notes {
+    width: 100%;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: 'Baloo Bhaijaan 2', sans-serif;
+    font-size: 0.85rem;
+    resize: vertical;
+    min-height: 36px;
+    color: var(--primary);
+    transition: border-color 0.2s;
+  }
+
+  .score-notes:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  .score-notes::placeholder {
+    color: #b2bec3;
+  }
+
+  /* Score display */
+  .score-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gray);
+    min-width: 30px;
+    text-align: center;
+  }
+
+  .score-value.has-score { color: var(--accent); }
+
+  /* Overall score */
+  .overall-score {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--light-gray);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-top: 20px;
+  }
+
+  .overall-score .overall-label {
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .overall-score .overall-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+  }
+
+  .overall-score .overall-bar {
+    flex: 1;
+    height: 10px;
+    background: var(--border);
+    border-radius: 5px;
+    margin: 0 20px;
+    overflow: hidden;
+  }
+
+  .overall-score .overall-fill {
+    height: 100%;
+    border-radius: 5px;
+    background: var(--accent);
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+
+  /* General notes */
+  .general-notes {
+    margin-top: 20px;
+  }
+
+  .general-notes label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .general-notes textarea {
+    width: 100%;
+    min-height: 100px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-family: 'Baloo Bhaijaan 2', sans-serif;
+    font-size: 0.95rem;
+    resize: vertical;
+    color: var(--primary);
+  }
+
+  .general-notes textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  /* Decision */
+  .decision-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  .decision-btn {
+    flex: 1;
+    min-width: 140px;
+    padding: 14px 20px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    background: #fff;
+    font-family: 'Baloo Bhaijaan 2', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+
+  .decision-btn:hover { transform: translateY(-2px); }
+  .decision-btn.selected { color: #fff; }
+  .decision-btn[data-decision="hire"] { color: var(--green); border-color: var(--green); }
+  .decision-btn[data-decision="hire"].selected { background: var(--green); color: #fff; }
+  .decision-btn[data-decision="maybe"] { color: var(--orange); border-color: var(--orange); }
+  .decision-btn[data-decision="maybe"].selected { background: var(--orange); color: #fff; }
+  .decision-btn[data-decision="pass"] { color: var(--red); border-color: var(--red); }
+  .decision-btn[data-decision="pass"].selected { background: var(--red); color: #fff; }
+
+  /* Export button */
+  .export-bar {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+    justify-content: center;
+  }
+
+  .export-btn {
+    padding: 14px 32px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Baloo Bhaijaan 2', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .export-btn:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .save-status {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: var(--green);
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .save-status.visible { opacity: 1; }
 
   /* Red Flags */
   .red-flags {
@@ -712,10 +908,10 @@
     </ul>
   </div>
 
-  <!-- Scoring Table -->
-  <div class="scoring">
+  <!-- Interactive Scoring Table -->
+  <div class="scoring" id="scorecard">
     <h2>Post-Interview Scorecard</h2>
-    <table class="scoring-table">
+    <table class="scoring-table" id="scoring-table">
       <thead>
         <tr>
           <th>Criteria</th>
@@ -724,63 +920,32 @@
           <th>Score /5</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>Technical SEO depth</td>
-          <td>Can explain crawl budget, indexing, schema beyond surface level</td>
-          <td class="weight-high">High</td>
-          <td><div class="score-cell"><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div></div></td>
-        </tr>
-        <tr>
-          <td>Saudi / Arabic SEO knowledge</td>
-          <td>Understands Saudi search behavior, dialect, local intent</td>
-          <td class="weight-high">High</td>
-          <td><div class="score-cell"><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div></div></td>
-        </tr>
-        <tr>
-          <td>Marketplace / programmatic SEO</td>
-          <td>Can handle thousands of template pages, faceted navigation</td>
-          <td class="weight-high">High</td>
-          <td><div class="score-cell"><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div></div></td>
-        </tr>
-        <tr>
-          <td>SaaS content strategy</td>
-          <td>Full-funnel thinking, content hubs, lead-gen focus</td>
-          <td class="weight-high">High</td>
-          <td><div class="score-cell"><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div></div></td>
-        </tr>
-        <tr>
-          <td>Independence & ownership</td>
-          <td>Can work with minimal direction, proactive communicator</td>
-          <td class="weight-high">High</td>
-          <td><div class="score-cell"><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div></div></td>
-        </tr>
-        <tr>
-          <td>Availability & realistic capacity</td>
-          <td>Can genuinely handle 3 projects alongside full-time work</td>
-          <td class="weight-high">High</td>
-          <td><div class="score-cell"><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div></div></td>
-        </tr>
-        <tr>
-          <td>Reporting & communication</td>
-          <td>Clear deliverables, structured updates, data-driven reporting</td>
-          <td class="weight-med">Med</td>
-          <td><div class="score-cell"><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div></div></td>
-        </tr>
-        <tr>
-          <td>Price / value fit</td>
-          <td>Rate is reasonable for part-time/freelance, clear pricing model</td>
-          <td class="weight-med">Med</td>
-          <td><div class="score-cell"><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div></div></td>
-        </tr>
-        <tr>
-          <td>Cultural fit & reliability</td>
-          <td>Responsive, honest about limitations, professional</td>
-          <td class="weight-med">Med</td>
-          <td><div class="score-cell"><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div></div></td>
-        </tr>
-      </tbody>
+      <tbody></tbody>
     </table>
+
+    <div class="overall-score">
+      <span class="overall-label">Overall Score</span>
+      <div class="overall-bar"><div class="overall-fill" id="overall-fill"></div></div>
+      <span class="overall-number" id="overall-number">-</span>
+    </div>
+
+    <!-- Per-criteria notes appear inline -->
+
+    <div class="general-notes">
+      <label>General Notes</label>
+      <textarea id="general-notes" placeholder="Overall impressions, key takeaways, follow-up items..."></textarea>
+    </div>
+
+    <div class="decision-row">
+      <button class="decision-btn" data-decision="hire" onclick="setDecision('hire')">Hire</button>
+      <button class="decision-btn" data-decision="maybe" onclick="setDecision('maybe')">Maybe / 2nd Round</button>
+      <button class="decision-btn" data-decision="pass" onclick="setDecision('pass')">Pass</button>
+    </div>
+
+    <div class="export-bar">
+      <button class="export-btn" onclick="exportToExcel()">Export to Excel</button>
+    </div>
+    <div class="save-status" id="save-status">Saved to Excel!</div>
   </div>
 
   <!-- Footer -->
@@ -789,5 +954,198 @@
   </div>
 
 </div>
+
+<!-- SheetJS for Excel export -->
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+
+<script>
+// Scorecard data
+const criteria = [
+  { name: "Technical SEO depth", lookFor: "Can explain crawl budget, indexing, schema beyond surface level", weight: "High", score: 0, notes: "" },
+  { name: "Saudi / Arabic SEO knowledge", lookFor: "Understands Saudi search behavior, dialect, local intent", weight: "High", score: 0, notes: "" },
+  { name: "Marketplace / programmatic SEO", lookFor: "Can handle thousands of template pages, faceted navigation", weight: "High", score: 0, notes: "" },
+  { name: "SaaS content strategy", lookFor: "Full-funnel thinking, content hubs, lead-gen focus", weight: "High", score: 0, notes: "" },
+  { name: "Independence & ownership", lookFor: "Can work with minimal direction, proactive communicator", weight: "High", score: 0, notes: "" },
+  { name: "Availability & realistic capacity", lookFor: "Can genuinely handle 3 projects alongside full-time work", weight: "High", score: 0, notes: "" },
+  { name: "Reporting & communication", lookFor: "Clear deliverables, structured updates, data-driven reporting", weight: "Med", score: 0, notes: "" },
+  { name: "Price / value fit", lookFor: "Rate is reasonable for part-time/freelance, clear pricing model", weight: "Med", score: 0, notes: "" },
+  { name: "Cultural fit & reliability", lookFor: "Responsive, honest about limitations, professional", weight: "Med", score: 0, notes: "" }
+];
+
+let decision = "";
+
+function renderTable() {
+  const tbody = document.querySelector("#scoring-table tbody");
+  tbody.innerHTML = "";
+  criteria.forEach((c, i) => {
+    // Score row
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${c.name}</td>
+      <td>${c.lookFor}</td>
+      <td class="${c.weight === 'High' ? 'weight-high' : 'weight-med'}">${c.weight}</td>
+      <td>
+        <div class="score-cell">
+          ${[1,2,3,4,5].map(n => `<div class="score-dot ${c.score >= n ? 'filled' : ''} ${c.score >= n ? (c.score <= 2 ? 'low' : c.score <= 3 ? 'mid' : 'high') : ''}" data-row="${i}" data-val="${n}" onclick="setScore(${i}, ${n})">${c.score >= n ? n : ''}</div>`).join('')}
+        </div>
+      </td>
+    `;
+    tbody.appendChild(tr);
+
+    // Notes row
+    const notesTr = document.createElement("tr");
+    notesTr.innerHTML = `<td colspan="4" style="padding:4px 16px 12px;border-bottom:1px solid var(--border);"><textarea class="score-notes" placeholder="Notes on ${c.name.toLowerCase()}..." data-row="${i}" oninput="setNotes(${i}, this.value)">${c.notes}</textarea></td>`;
+    tbody.appendChild(notesTr);
+  });
+}
+
+function setScore(row, val) {
+  // Toggle: clicking same score clears it
+  if (criteria[row].score === val) {
+    criteria[row].score = 0;
+  } else {
+    criteria[row].score = val;
+  }
+  renderTable();
+  updateOverall();
+  saveState();
+}
+
+function setNotes(row, val) {
+  criteria[row].notes = val;
+  saveState();
+}
+
+function setDecision(d) {
+  decision = (decision === d) ? "" : d;
+  document.querySelectorAll(".decision-btn").forEach(btn => {
+    btn.classList.toggle("selected", btn.dataset.decision === decision);
+  });
+  saveState();
+}
+
+function updateOverall() {
+  const scored = criteria.filter(c => c.score > 0);
+  const el = document.getElementById("overall-number");
+  const fill = document.getElementById("overall-fill");
+  if (scored.length === 0) {
+    el.textContent = "-";
+    fill.style.width = "0%";
+    return;
+  }
+
+  // Weighted average: High = 2, Med = 1
+  let totalWeight = 0, totalScore = 0;
+  criteria.forEach(c => {
+    if (c.score > 0) {
+      const w = c.weight === "High" ? 2 : 1;
+      totalWeight += w;
+      totalScore += c.score * w;
+    }
+  });
+  const avg = totalScore / totalWeight;
+  el.textContent = avg.toFixed(1) + " / 5";
+  fill.style.width = (avg / 5 * 100) + "%";
+
+  // Color
+  if (avg <= 2) { fill.style.background = "var(--red)"; el.style.color = "var(--red)"; }
+  else if (avg <= 3.5) { fill.style.background = "var(--orange)"; el.style.color = "var(--orange)"; }
+  else { fill.style.background = "var(--green)"; el.style.color = "var(--green)"; }
+}
+
+function exportToExcel() {
+  const wb = XLSX.utils.book_new();
+
+  // Scorecard sheet
+  const scoreData = [
+    ["Interview Scorecard — Ali Ahmad", "", "", "", ""],
+    ["Date", new Date().toLocaleDateString(), "", "", ""],
+    ["Interviewer", "Saif", "", "", ""],
+    ["Role", "Part-time / Freelance SEO", "", "", ""],
+    ["Decision", decision || "Not decided", "", "", ""],
+    [],
+    ["Criteria", "What to Look For", "Weight", "Score /5", "Notes"]
+  ];
+
+  criteria.forEach(c => {
+    scoreData.push([c.name, c.lookFor, c.weight, c.score || "", c.notes]);
+  });
+
+  // Overall
+  const scored = criteria.filter(c => c.score > 0);
+  let avg = 0;
+  if (scored.length > 0) {
+    let tw = 0, ts = 0;
+    criteria.forEach(c => { if (c.score > 0) { const w = c.weight === "High" ? 2 : 1; tw += w; ts += c.score * w; } });
+    avg = ts / tw;
+  }
+
+  scoreData.push([]);
+  scoreData.push(["Overall Weighted Score", "", "", avg > 0 ? avg.toFixed(1) + " / 5" : "N/A", ""]);
+  scoreData.push([]);
+  scoreData.push(["General Notes"]);
+  scoreData.push([document.getElementById("general-notes").value || ""]);
+
+  const ws = XLSX.utils.aoa_to_sheet(scoreData);
+
+  // Column widths
+  ws["!cols"] = [
+    { wch: 32 },
+    { wch: 52 },
+    { wch: 8 },
+    { wch: 10 },
+    { wch: 45 }
+  ];
+
+  XLSX.utils.book_append_sheet(wb, ws, "Scorecard");
+  XLSX.writeFile(wb, "Ali_Ahmad_Interview_Scorecard.xlsx");
+
+  const status = document.getElementById("save-status");
+  status.classList.add("visible");
+  setTimeout(() => status.classList.remove("visible"), 3000);
+}
+
+// LocalStorage persistence
+function saveState() {
+  const state = {
+    criteria: criteria.map(c => ({ score: c.score, notes: c.notes })),
+    decision: decision,
+    generalNotes: document.getElementById("general-notes")?.value || ""
+  };
+  localStorage.setItem("ali-ahmad-scorecard", JSON.stringify(state));
+}
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem("ali-ahmad-scorecard");
+    if (!raw) return;
+    const state = JSON.parse(raw);
+    state.criteria.forEach((s, i) => {
+      if (criteria[i]) {
+        criteria[i].score = s.score;
+        criteria[i].notes = s.notes;
+      }
+    });
+    decision = state.decision || "";
+    if (decision) {
+      document.querySelectorAll(".decision-btn").forEach(btn => {
+        btn.classList.toggle("selected", btn.dataset.decision === decision);
+      });
+    }
+    const gn = document.getElementById("general-notes");
+    if (gn && state.generalNotes) gn.value = state.generalNotes;
+  } catch(e) {}
+}
+
+// Auto-save general notes
+document.addEventListener("DOMContentLoaded", () => {
+  loadState();
+  renderTable();
+  updateOverall();
+  const gn = document.getElementById("general-notes");
+  if (gn) gn.addEventListener("input", saveState);
+});
+</script>
+
 </body>
 </html>
