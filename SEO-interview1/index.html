@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Interview Plan — Ali Ahmad</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #2d3436;
+    --accent: #0984e3;
+    --accent-light: #e8f4fd;
+    --green: #00b894;
+    --orange: #f39c12;
+    --red: #d63031;
+    --gray: #636e72;
+    --light-gray: #f5f6fa;
+    --border: #dfe6e9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Baloo Bhaijaan 2', sans-serif;
+    background: #ffffff;
+    color: var(--primary);
+    line-height: 1.6;
+    padding: 40px 20px;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 3px solid var(--primary);
+  }
+
+  .header h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 4px;
+  }
+
+  .header .subtitle {
+    font-size: 1.15rem;
+    color: var(--gray);
+    font-weight: 500;
+  }
+
+  .header .meta {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+
+  .header .meta span {
+    background: var(--light-gray);
+    padding: 6px 16px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--gray);
+  }
+
+  /* Candidate Card */
+  .candidate-card {
+    background: var(--light-gray);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 40px;
+  }
+
+  .candidate-card h2 {
+    grid-column: 1 / -1;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--accent);
+  }
+
+  .candidate-card .field {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .candidate-card .field .label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--gray);
+    font-weight: 600;
+  }
+
+  .candidate-card .field .value {
+    font-size: 1.05rem;
+    font-weight: 500;
+  }
+
+  /* Projects Context */
+  .projects-context {
+    margin-bottom: 40px;
+  }
+
+  .projects-context h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--primary);
+  }
+
+  .project-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .project-card {
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+
+  .project-card:hover {
+    border-color: var(--accent);
+  }
+
+  .project-card .icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+  }
+
+  .project-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .project-card p {
+    font-size: 0.88rem;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+
+  .project-card .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .project-card .tag {
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 6px;
+  }
+
+  /* CV Analysis */
+  .cv-analysis {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .cv-box {
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .cv-box.strengths {
+    background: #f0faf6;
+    border: 1.5px solid #b8e6d0;
+  }
+
+  .cv-box.gaps {
+    background: #fff8f0;
+    border: 1.5px solid #f5d5a0;
+  }
+
+  .cv-box h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .cv-box.strengths h3 { color: var(--green); }
+  .cv-box.gaps h3 { color: var(--orange); }
+
+  .cv-box ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .cv-box ul li {
+    font-size: 0.92rem;
+    padding: 5px 0;
+    padding-left: 20px;
+    position: relative;
+    color: #444;
+  }
+
+  .cv-box ul li::before {
+    position: absolute;
+    left: 0;
+    top: 5px;
+  }
+
+  .cv-box.strengths ul li::before { content: "+"; font-weight: 700; color: var(--green); }
+  .cv-box.gaps ul li::before { content: "?"; font-weight: 700; color: var(--orange); }
+
+  /* Interview Sections */
+  .section {
+    margin-bottom: 36px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .section-number {
+    background: var(--primary);
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .section-header h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    flex: 1;
+  }
+
+  .section-time {
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .question-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .question-list li {
+    padding: 10px 16px;
+    margin-bottom: 8px;
+    background: var(--light-gray);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .question-list li strong {
+    color: var(--accent);
+  }
+
+  .question-list li .note {
+    display: block;
+    font-size: 0.83rem;
+    color: var(--gray);
+    margin-top: 4px;
+    font-style: italic;
+  }
+
+  .question-list li .arabic {
+    display: block;
+    direction: rtl;
+    text-align: right;
+    font-size: 0.95rem;
+    color: var(--primary);
+    margin-top: 4px;
+  }
+
+  /* Scenario box */
+  .scenario {
+    background: #fff;
+    border: 1.5px solid var(--accent);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 8px 0;
+  }
+
+  .scenario-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .scenario p {
+    font-size: 0.93rem;
+    color: #444;
+  }
+
+  /* Scoring Table */
+  .scoring {
+    margin-bottom: 40px;
+  }
+
+  .scoring h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .scoring-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+
+  .scoring-table th {
+    background: var(--primary);
+    color: #fff;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+  }
+
+  .scoring-table th:last-child,
+  .scoring-table td:last-child {
+    text-align: center;
+    width: 100px;
+  }
+
+  .scoring-table th:nth-child(3),
+  .scoring-table td:nth-child(3) {
+    text-align: center;
+    width: 80px;
+  }
+
+  .scoring-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .scoring-table tr:nth-child(even) td {
+    background: var(--light-gray);
+  }
+
+  .weight-high { color: var(--red); font-weight: 700; }
+  .weight-med { color: var(--orange); font-weight: 700; }
+
+  .score-cell {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+  }
+
+  .score-dot {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border);
+    border-radius: 50%;
+  }
+
+  /* Red Flags */
+  .red-flags {
+    background: #fdf2f2;
+    border: 1.5px solid #f5c6c6;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 40px;
+  }
+
+  .red-flags h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--red);
+    margin-bottom: 12px;
+  }
+
+  .red-flags ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .red-flags ul li {
+    font-size: 0.92rem;
+    padding: 5px 0 5px 20px;
+    position: relative;
+    color: #555;
+  }
+
+  .red-flags ul li::before {
+    content: "!";
+    position: absolute;
+    left: 0;
+    font-weight: 800;
+    color: var(--red);
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding-top: 24px;
+    border-top: 2px solid var(--border);
+    color: var(--gray);
+    font-size: 0.85rem;
+  }
+
+  /* Print styles */
+  @media print {
+    body { padding: 20px; font-size: 0.9rem; }
+    .section, .cv-analysis, .scoring { break-inside: avoid; }
+    .project-cards { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 700px) {
+    .candidate-card { grid-template-columns: 1fr; }
+    .cv-analysis { grid-template-columns: 1fr; }
+    .project-cards { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>Interview Plan</h1>
+    <div class="subtitle">Ali Ahmad &mdash; SEO & Growth Strategist</div>
+    <div class="meta">
+      <span>Interviewer: Saif</span>
+      <span>Role: Part-time / Freelance SEO</span>
+      <span>Duration: ~50 min</span>
+    </div>
+  </div>
+
+  <!-- Candidate Card -->
+  <div class="candidate-card">
+    <h2>Candidate Snapshot</h2>
+    <div class="field">
+      <span class="label">Name</span>
+      <span class="value">Ali Ahmad</span>
+    </div>
+    <div class="field">
+      <span class="label">Location</span>
+      <span class="value">Damascus, Syria (remote)</span>
+    </div>
+    <div class="field">
+      <span class="label">Experience</span>
+      <span class="value">3+ years (all UAE-based clients)</span>
+    </div>
+    <div class="field">
+      <span class="label">Languages</span>
+      <span class="value">Arabic (native) &middot; English (proficient)</span>
+    </div>
+    <div class="field">
+      <span class="label">Current Role</span>
+      <span class="value">SEO Strategist &mdash; Confidential B2B SaaS (Dubai)</span>
+    </div>
+    <div class="field">
+      <span class="label">Career Path</span>
+      <span class="value">Agency Junior &rarr; Technical Specialist &rarr; Strategist</span>
+    </div>
+  </div>
+
+  <!-- Your 3 Projects -->
+  <div class="projects-context">
+    <h2>Your 3 Saudi Projects He'd Own</h2>
+    <div class="project-cards">
+      <div class="project-card">
+        <div class="icon">&#127968;</div>
+        <h3>Renting Marketplace</h3>
+        <p>Multi-listing platform for rentals in Saudi Arabia</p>
+        <div class="tags">
+          <span class="tag">Local SEO</span>
+          <span class="tag">Arabic KWs</span>
+          <span class="tag">Marketplace SEO</span>
+          <span class="tag">Programmatic Pages</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="icon">&#127959;</div>
+        <h3>Real Estate Site</h3>
+        <p>Property listings and real estate services in KSA</p>
+        <div class="tags">
+          <span class="tag">Local SEO</span>
+          <span class="tag">Content Strategy</span>
+          <span class="tag">Schema / Structured Data</span>
+          <span class="tag">Competitive Niche</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="icon">&#128187;</div>
+        <h3>SaaS App</h3>
+        <p>Software product targeting Saudi / MENA market</p>
+        <div class="tags">
+          <span class="tag">B2B SEO</span>
+          <span class="tag">Content Hubs</span>
+          <span class="tag">Pillar Pages</span>
+          <span class="tag">Lead Gen</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CV Strengths & Gaps -->
+  <div class="cv-analysis">
+    <div class="cv-box strengths">
+      <h3>CV Strengths</h3>
+      <ul>
+        <li>Agency background &mdash; audited 100+ sites, broad exposure</li>
+        <li>Bilingual Arabic/English SEO (relevant to Saudi)</li>
+        <li>Full-stack: technical, on-page, content architecture, off-page</li>
+        <li>Tooling: Ahrefs, Semrush, Screaming Frog, GA4, Looker Studio</li>
+        <li>Content hubs & pillar page experience (good for SaaS project)</li>
+        <li>Python scripting for SEO automation</li>
+        <li>Local SEO multi-branch experience (Dubai London Clinic)</li>
+      </ul>
+    </div>
+    <div class="cv-box gaps">
+      <h3>Gaps to Probe</h3>
+      <ul>
+        <li>No formal education listed</li>
+        <li>"Confidential" current employer &mdash; verify the role is real</li>
+        <li>No portfolio or live URLs shared yet</li>
+        <li>Claims are generic ("40+ keywords ranked") &mdash; need specifics</li>
+        <li>No marketplace/programmatic SEO experience mentioned</li>
+        <li>All experience is UAE &mdash; how well does he know Saudi market?</li>
+        <li>No mention of budget/tool license management</li>
+        <li>Can he handle 3 projects part-time alongside a full-time role?</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Interview Sections -->
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <h3>Warm-up & Context</h3>
+      <span class="section-time">5 min</span>
+    </div>
+    <ul class="question-list">
+      <li>
+        <span class="arabic">عرفني عن نفسك وعن شغلك الحالي</span>
+        Tell me about yourself and your current work.
+      </li>
+      <li>Why are you looking for freelance/part-time work alongside your current full-time role?</li>
+      <li>What's your realistic availability per week in hours?</li>
+      <li>Have you worked with Saudi-based clients or on Saudi-market projects before?</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <h3>Verify Experience &mdash; Dig Into Specifics</h3>
+      <span class="section-time">10 min</span>
+    </div>
+    <ul class="question-list">
+      <li>
+        <strong>Confidential B2B SaaS role:</strong> What's the product? What did the site look like traffic-wise when you joined vs. now? What did you inherit vs. build from scratch?
+      </li>
+      <li>
+        <strong>BinSina Pharmacy:</strong> "40+ keywords ranked" &mdash; which keywords? What was traffic before/after? What was your specific contribution vs. the team's?
+      </li>
+      <li>
+        <strong>United SEO &mdash; 100+ audits:</strong> Walk me through your audit process for a new client. Tools, order, deliverable format.
+      </li>
+      <li>
+        Can you show me a live site you worked on or a sample deliverable?
+        <span class="note">If no portfolio was sent before the call, this is a yellow flag.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <h3>Technical SEO Deep-Dive</h3>
+      <span class="section-time">10 min</span>
+    </div>
+    <ul class="question-list">
+      <li>
+        <div class="scenario">
+          <div class="scenario-label">Scenario &mdash; Renting Marketplace</div>
+          <p>We have a renting marketplace with thousands of listing pages across Saudi cities. Many pages are thin or near-duplicate (same template, different city/district). Crawl budget is being wasted. How do you approach this?</p>
+        </div>
+        <span class="note">Looking for: canonicalization, noindex strategy, programmatic SEO understanding, faceted navigation handling</span>
+      </li>
+      <li>
+        <div class="scenario">
+          <div class="scenario-label">Scenario &mdash; Real Estate Site</div>
+          <p>The real estate site has 200+ property pages but Google is only indexing 60. What's your diagnosis process?</p>
+        </div>
+        <span class="note">Looking for: GSC coverage report, crawl analysis, thin content audit, internal linking, sitemap review</span>
+      </li>
+      <li>
+        <strong>Schema:</strong> Beyond basic FAQ/Article &mdash; have you implemented RealEstate, Product, or LocalBusiness schema? How would you approach schema for rental listings?
+      </li>
+      <li>
+        <strong>Core Web Vitals:</strong> A client's LCP is 5.2s on mobile. Walk me through diagnosis.
+      </li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <h3>Content Strategy &mdash; Project-Specific</h3>
+      <span class="section-time">10 min</span>
+    </div>
+    <ul class="question-list">
+      <li>
+        <div class="scenario">
+          <div class="scenario-label">Scenario &mdash; SaaS App</div>
+          <p>Our SaaS product targets Saudi businesses. We need to build organic traffic that generates leads, not just visits. How would you structure the content strategy? What does the funnel look like?</p>
+        </div>
+        <span class="note">Looking for: TOFU/MOFU/BOFU thinking, content hubs, pillar pages, lead magnets, CTA strategy</span>
+      </li>
+      <li>
+        <strong>Arabic SEO:</strong> How do you handle Arabic keyword research for Saudi specifically? (MSA vs. Saudi dialect, search volume tools for Arabic, local intent)
+      </li>
+      <li>
+        <strong>Renting marketplace content:</strong> Beyond listings, what content would you create to build topical authority for a rental platform in Saudi?
+        <span class="note">Looking for: city guides, renting guides, neighborhood comparisons, legal/regulatory content</span>
+      </li>
+      <li>How do you measure content ROI &mdash; not just traffic, but actual leads/conversions? What does your reporting look like?</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <h3>Working Model & Logistics</h3>
+      <span class="section-time">10 min</span>
+    </div>
+    <ul class="question-list">
+      <li>I need to delegate SEO responsibility, not micromanage. Can you work independently? What does that look like in practice?</li>
+      <li>What would your monthly deliverable/report look like for each project?</li>
+      <li>What tools do you need access to? (Ahrefs, Semrush, etc. &mdash; license costs matter)</li>
+      <li>Have you managed freelance/part-time arrangements before while holding a full-time role? How did you handle conflicts?</li>
+      <li>
+        <strong>Rate:</strong> What do you charge &mdash; hourly, monthly retainer, or per-project?
+        <span class="note">Get a clear number. Clarify if it covers all 3 projects or per-project.</span>
+      </li>
+      <li>
+        <strong>Capacity check:</strong> Can you realistically handle 3 Saudi projects alongside your full-time role?
+        <span class="note">Be direct. Overcommitment is the #1 risk with freelancers who have day jobs.</span>
+      </li>
+      <li>When can you start? What does onboarding look like for you?</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <h3>Quick-Fire &mdash; Mindset & Depth</h3>
+      <span class="section-time">5 min</span>
+    </div>
+    <ul class="question-list">
+      <li>What's one SEO project that failed or underperformed? What happened and what did you learn?</li>
+      <li>How do you stay updated on algorithm changes and new SEO developments?</li>
+      <li>What's your take on AI-generated content for SEO in 2026?</li>
+      <li>How are AI Overviews / GEO changing your approach to SEO?</li>
+      <li>If you could only pick one metric to judge SEO success, what would it be and why?</li>
+    </ul>
+  </div>
+
+  <!-- Red Flags -->
+  <div class="red-flags">
+    <h2>Watch Out For</h2>
+    <ul>
+      <li>Buzzword overload with no specifics &mdash; push for real numbers, real URLs, real screenshots</li>
+      <li>Overcommitment &mdash; full-time + 3 freelance projects is a lot. Press on time management</li>
+      <li>No portfolio or examples after you explicitly asked for one</li>
+      <li>Agency mindset (surface-level, volume-based) vs. depth needed for 3 owned projects</li>
+      <li>No experience with marketplace/programmatic SEO &mdash; the renting site needs this</li>
+      <li>Vague on Saudi market specifics &mdash; says "Arabic SEO" but can't differentiate Saudi from UAE</li>
+      <li>Can't articulate a failure or learning moment &mdash; signals lack of self-awareness</li>
+    </ul>
+  </div>
+
+  <!-- Scoring Table -->
+  <div class="scoring">
+    <h2>Post-Interview Scorecard</h2>
+    <table class="scoring-table">
+      <thead>
+        <tr>
+          <th>Criteria</th>
+          <th>What to Look For</th>
+          <th>Weight</th>
+          <th>Score /5</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Technical SEO depth</td>
+          <td>Can explain crawl budget, indexing, schema beyond surface level</td>
+          <td class="weight-high">High</td>
+          <td><div class="score-cell"><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div></div></td>
+        </tr>
+        <tr>
+          <td>Saudi / Arabic SEO knowledge</td>
+          <td>Understands Saudi search behavior, dialect, local intent</td>
+          <td class="weight-high">High</td>
+          <td><div class="score-cell"><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div></div></td>
+        </tr>
+        <tr>
+          <td>Marketplace / programmatic SEO</td>
+          <td>Can handle thousands of template pages, faceted navigation</td>
+          <td class="weight-high">High</td>
+          <td><div class="score-cell"><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div></div></td>
+        </tr>
+        <tr>
+          <td>SaaS content strategy</td>
+          <td>Full-funnel thinking, content hubs, lead-gen focus</td>
+          <td class="weight-high">High</td>
+          <td><div class="score-cell"><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div></div></td>
+        </tr>
+        <tr>
+          <td>Independence & ownership</td>
+          <td>Can work with minimal direction, proactive communicator</td>
+          <td class="weight-high">High</td>
+          <td><div class="score-cell"><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div></div></td>
+        </tr>
+        <tr>
+          <td>Availability & realistic capacity</td>
+          <td>Can genuinely handle 3 projects alongside full-time work</td>
+          <td class="weight-high">High</td>
+          <td><div class="score-cell"><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div></div></td>
+        </tr>
+        <tr>
+          <td>Reporting & communication</td>
+          <td>Clear deliverables, structured updates, data-driven reporting</td>
+          <td class="weight-med">Med</td>
+          <td><div class="score-cell"><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div></div></td>
+        </tr>
+        <tr>
+          <td>Price / value fit</td>
+          <td>Rate is reasonable for part-time/freelance, clear pricing model</td>
+          <td class="weight-med">Med</td>
+          <td><div class="score-cell"><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div></div></td>
+        </tr>
+        <tr>
+          <td>Cultural fit & reliability</td>
+          <td>Responsive, honest about limitations, professional</td>
+          <td class="weight-med">Med</td>
+          <td><div class="score-cell"><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div></div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    TMD &mdash; Interview Plan for Ali Ahmad &mdash; SEO Freelance / Part-time Role &mdash; 3 Saudi Projects
+  </div>
+
+</div>
+</body>
+</html>
