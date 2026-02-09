@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TMD — Monthly Meeting Bingo</title>
+<title>TMD — بينغو الاجتماع الشهري</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap');
 
@@ -19,6 +19,7 @@
     justify-content: center;
     padding: 20px;
     color: #fff;
+    direction: rtl;
   }
 
   .header {
@@ -49,6 +50,7 @@
     gap: 6px;
     max-width: 620px;
     width: 100%;
+    direction: ltr;
   }
 
   .col-header {
@@ -83,6 +85,7 @@
     position: relative;
     overflow: hidden;
     color: rgba(255,255,255,0.82);
+    direction: rtl;
   }
 
   .cell:hover {
@@ -102,7 +105,7 @@
     content: '✓';
     position: absolute;
     top: 4px;
-    right: 6px;
+    left: 6px;
     font-size: 0.7rem;
     color: #ffc409;
   }
@@ -222,87 +225,91 @@
 <body>
 
 <div class="header">
-  <h1>Monthly Meeting Bingo</h1>
-  <p>Click a square when it happens — first to get 5 in a row wins!</p>
+  <h1>بينغو الاجتماع الشهري</h1>
+  <p>اضغط على المربع لما يصير — أول واحد يكمّل ٥ بصف يفوز!</p>
 </div>
 
 <div class="bingo-board" id="board"></div>
 
 <div class="footer">
-  <button class="btn btn-shuffle" onclick="shuffleBoard()">🔀 Shuffle Cards</button>
-  <button class="btn btn-reset" onclick="resetBoard()">↻ Reset</button>
+  <button class="btn btn-shuffle" onclick="shuffleBoard()">🔀 خلط الكروت</button>
+  <button class="btn btn-reset" onclick="resetBoard()">↻ إعادة</button>
 </div>
-<div class="score-display" id="score">0 / 25 marked</div>
+<div class="score-display" id="score">٠ / ٢٥ محدد</div>
 
 <div class="instructions">
-  Each player shuffles for a unique card. Click squares as things happen during the meeting. First to complete a row, column, or diagonal shouts <strong style="color:#ffc409;">BINGO!</strong>
+  كل لاعب يخلط عشان يحصل على كرت مختلف. اضغط على المربعات لما تصير أثناء الاجتماع. أول واحد يكمّل صف أو عمود أو قُطر يصيح <strong style="color:#ffc409;">بينغو!</strong>
 </div>
 
 <div class="bingo-alert" id="bingoAlert">
-  <h2>🎉 BINGO! 🎉</h2>
-  <p>You got 5 in a row — you're the meeting MVP!</p>
-  <button class="btn btn-shuffle" onclick="closeBingo()">Keep Playing</button>
+  <h2>🎉 بينغو! 🎉</h2>
+  <p>كمّلت ٥ بصف — أنت نجم الاجتماع!</p>
+  <button class="btn btn-shuffle" onclick="closeBingo()">كمّل لعب</button>
 </div>
 
 <script>
 const allSquares = [
-  // The returning Salman
-  "Someone asks Salman\n\"How was the vacation?\"",
-  "Salman says\n\"What did I miss?\"",
-  "Salman shares\na vacation photo",
-  "Someone references\nan inside joke",
-  "Someone jokes\n\"Don't leave again\"",
-  "Someone says\n\"I'll keep it brief\"",
+  // عودة سلمان
+  "أحد يسأل سلمان\n\"كيف كانت الإجازة؟\"",
+  "سلمان يقول\n\"وش فاتني؟\"",
+  "سلمان يشارك\nصورة من الإجازة",
+  "أحد يذكر\nنكتة داخلية",
+  "أحد يمزح\n\"لا تروح مرة ثانية\"",
+  "أحد يقول\n\"بخليها مختصرة\"",
 
-  // Team moments
-  "New member\nintroduces themselves",
-  "Someone gives\na shout-out to a colleague",
-  "A fun fact or hobby\ncomes up unexpectedly",
-  "Welcome message\nin the chat",
-  "Someone says\n\"You'll get used to it\"",
+  // لحظات الفريق
+  "عضو جديد\nيعرّف عن نفسه",
+  "أحد يشكر\nزميله قدام الكل",
+  "معلومة أو هواية\nتطلع بالصدفة",
+  "رسالة ترحيب\nبالشات",
+  "أحد يقول\n\"بتتعود عليها\"",
 
-  // Classic meeting moments
-  "\"Can you see\nmy screen?\"",
-  "Someone is\non mute",
-  "Echo or audio\nfeedback",
-  "Mystery background\nnoise",
-  "Someone joins\nlate",
-  "Someone's background\ngets a compliment",
-  "\"Let's take this\noffline\"",
-  "\"Great question\"",
-  "\"Moving on...\"",
-  "Meeting runs\nover time",
-  "Awkward crosstalk /\npeople talking at once",
-  "Someone says\n\"Can you repeat that?\"",
-  "Uncomfortable\nsilence > 5 seconds",
+  // لحظات الاجتماع الكلاسيكية
+  "\"تشوفون\nشاشتي؟\"",
+  "أحد صوته\nعلى ميوت",
+  "صدى صوت\nأو تشويش",
+  "صوت غريب\nمن الخلفية",
+  "أحد يدخل\nمتأخر",
+  "أحد يمدح\nخلفية زميله",
+  "\"نتكلم عنها\nبعد الاجتماع\"",
+  "\"سؤال ممتاز\"",
+  "\"نكمل...\"",
+  "الاجتماع يطول\nعن وقته",
+  "ناس يتكلمون\nفوق بعض",
+  "أحد يقول\n\"تعيدها لو سمحت؟\"",
+  "سكوت محرج\nأكثر من ٥ ثواني",
 
-  // Monthly review vibes
-  "Someone says\n\"Compared to last month...\"",
-  "A metric is\ncelebrated 📈",
-  "A metric\nlooked better in theory",
-  "Someone shouts out\na teammate's win",
-  "\"We need to do\nbetter next month\"",
-  "\"It's a work\nin progress\"",
-  "Someone throws out\na very specific number",
-  "Deadline gets\npushed to next month",
-  "\"Lessons learned\"",
-  "A blocker is mentioned\nthat surprises everyone",
+  // أجواء المراجعة الشهرية
+  "أحد يقول\n\"مقارنة بالشهر اللي فات...\"",
+  "رقم يتم\nالاحتفال فيه 📈",
+  "رقم كان أحلى\nبالنظرية",
+  "أحد يشيد\nبإنجاز زميله",
+  "\"لازم نتحسن\nالشهر الجاي\"",
+  "\"الموضوع\nشغّال عليه\"",
+  "أحد يذكر\nرقم دقيق جداً",
+  "ديدلاين ينتقل\nللشهر الجاي",
+  "\"دروس مستفادة\"",
+  "عائق يُذكر\nيفاجئ الكل",
 
-  // People behaviors
-  "Someone shares\ntheir screen by accident",
-  "Obvious coffee\nor snack on screen",
-  "Pet or kid\nmakes an appearance",
-  "Someone uses\na buzzword",
-  "\"Synergy\"\nis said unironically",
-  "Someone gives\na thumbs up 👍",
-  "Everyone laughs\nat the same time",
-  "\"Happy to chat\nabout it after\"",
-  "Side conversation\nin the chat",
-  "Someone drops a\nfire emoji in chat 🔥"
+  // سلوكيات الناس
+  "أحد يشارك\nشاشته بالغلط",
+  "قهوة أو سناك\nواضحة بالكاميرا",
+  "طفل أو حيوان أليف\nيظهر فجأة",
+  "أحد يستخدم\nكلمة رنانة",
+  "كلمة \"سينرجي\"\nتنقال بجدية",
+  "أحد يرسل\nإعجاب 👍",
+  "الكل يضحكون\nبنفس اللحظة",
+  "\"نتواصل\nبعد الاجتماع\"",
+  "سوالف جانبية\nبالشات",
+  "أحد يرسل\nإيموجي نار بالشات 🔥"
 ];
 
 let boardSquares = [];
 let marked = new Set();
+
+function toArabicNum(n) {
+  return n.toString().replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+}
 
 function shuffle(arr) {
   const a = [...arr];
@@ -336,7 +343,7 @@ function buildBoard() {
 
     if (i === 12) {
       cell.className = 'cell free-space marked';
-      cell.innerHTML = '⭐<br>FREE<br>SPACE';
+      cell.innerHTML = '⭐<br>مربع<br>مجاني';
       marked.add(12);
     } else {
       cell.textContent = shuffled[idx];
@@ -365,7 +372,7 @@ function toggleCell(cell, index) {
 }
 
 function updateScore() {
-  document.getElementById('score').textContent = `${marked.size} / 25 marked`;
+  document.getElementById('score').textContent = `${toArabicNum(marked.size)} / ٢٥ محدد`;
 }
 
 function checkBingo() {
