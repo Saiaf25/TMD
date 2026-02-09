@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TMD — Monthly Meeting Bingo</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Baloo Bhaijaan 2', cursive, sans-serif;
+    background: #0c0e1d;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: #fff;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .header h1 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #ffc409, #cc5f73);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 2px;
+    letter-spacing: -0.5px;
+  }
+
+  .header p {
+    font-size: 1rem;
+    color: #96c7c3;
+    opacity: 0.7;
+    font-weight: 500;
+  }
+
+  .bingo-board {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+    max-width: 620px;
+    width: 100%;
+  }
+
+  .col-header {
+    text-align: center;
+    font-weight: 800;
+    font-size: 1.7rem;
+    padding: 8px 0;
+    letter-spacing: 2px;
+  }
+  .col-header:nth-child(1) { color: #ffc409; }
+  .col-header:nth-child(2) { color: #cc5f73; }
+  .col-header:nth-child(3) { color: #96c7c3; }
+  .col-header:nth-child(4) { color: #ffc409; }
+  .col-header:nth-child(5) { color: #cc5f73; }
+
+  .cell {
+    aspect-ratio: 1;
+    background: rgba(150, 199, 195, 0.06);
+    border: 2px solid rgba(150, 199, 195, 0.15);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1.3;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+    color: rgba(255,255,255,0.82);
+  }
+
+  .cell:hover {
+    background: rgba(150, 199, 195, 0.14);
+    border-color: rgba(150, 199, 195, 0.35);
+    transform: scale(1.03);
+  }
+
+  .cell.marked {
+    background: linear-gradient(135deg, rgba(204,95,115,0.3), rgba(255,196,9,0.18));
+    border-color: #cc5f73;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(204,95,115,0.2);
+  }
+
+  .cell.marked::after {
+    content: '✓';
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    font-size: 0.7rem;
+    color: #ffc409;
+  }
+
+  .cell.free-space {
+    background: linear-gradient(135deg, #cc5f73, #ffc409);
+    border-color: transparent;
+    color: #0c0e1d;
+    font-weight: 800;
+    font-size: 0.8rem;
+    cursor: default;
+  }
+
+  .cell.free-space::after { display: none; }
+
+  .footer {
+    margin-top: 24px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Baloo Bhaijaan 2', cursive, sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-shuffle {
+    background: linear-gradient(135deg, #ffc409, #cc5f73);
+    color: #0c0e1d;
+  }
+  .btn-shuffle:hover { transform: scale(1.05); box-shadow: 0 4px 20px rgba(255,196,9,0.35); }
+
+  .btn-reset {
+    background: rgba(150, 199, 195, 0.1);
+    color: #96c7c3;
+    border: 1px solid rgba(150, 199, 195, 0.25);
+  }
+  .btn-reset:hover { background: rgba(150, 199, 195, 0.2); color: #fff; }
+
+  .score-display {
+    font-size: 0.9rem;
+    color: rgba(150, 199, 195, 0.5);
+    margin-top: 10px;
+    font-weight: 500;
+  }
+
+  .bingo-alert {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(12,14,29,0.92);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .bingo-alert.show { display: flex; }
+
+  .bingo-alert h2 {
+    font-size: 4rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #ffc409, #cc5f73, #96c7c3, #ffc409);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: pulse 0.6s ease infinite alternate;
+  }
+
+  .bingo-alert p {
+    margin-top: 12px;
+    font-size: 1.15rem;
+    color: #96c7c3;
+    opacity: 0.8;
+  }
+
+  .bingo-alert .btn {
+    margin-top: 24px;
+  }
+
+  @keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.08); }
+  }
+
+  .instructions {
+    max-width: 620px;
+    width: 100%;
+    margin-top: 20px;
+    padding: 16px 20px;
+    background: rgba(150, 199, 195, 0.04);
+    border-radius: 12px;
+    border: 1px solid rgba(150, 199, 195, 0.1);
+    font-size: 0.85rem;
+    color: rgba(150, 199, 195, 0.45);
+    line-height: 1.5;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  @media (max-width: 500px) {
+    .bingo-board { gap: 4px; }
+    .cell { font-size: 0.6rem; padding: 5px; border-radius: 8px; }
+    .col-header { font-size: 1.2rem; }
+    .header h1 { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Monthly Meeting Bingo</h1>
+  <p>Click a square when it happens — first to get 5 in a row wins!</p>
+</div>
+
+<div class="bingo-board" id="board"></div>
+
+<div class="footer">
+  <button class="btn btn-shuffle" onclick="shuffleBoard()">🔀 Shuffle Cards</button>
+  <button class="btn btn-reset" onclick="resetBoard()">↻ Reset</button>
+</div>
+<div class="score-display" id="score">0 / 25 marked</div>
+
+<div class="instructions">
+  Each player shuffles for a unique card. Click squares as things happen during the meeting. First to complete a row, column, or diagonal shouts <strong style="color:#ffc409;">BINGO!</strong>
+</div>
+
+<div class="bingo-alert" id="bingoAlert">
+  <h2>🎉 BINGO! 🎉</h2>
+  <p>You got 5 in a row — you're the meeting MVP!</p>
+  <button class="btn btn-shuffle" onclick="closeBingo()">Keep Playing</button>
+</div>
+
+<script>
+const allSquares = [
+  // The returning manager
+  "Someone asks the manager\n\"How was the vacation?\"",
+  "Manager says\n\"What did I miss?\"",
+  "Manager shares\na vacation photo",
+  "Manager looks confused\nby something new",
+  "Someone jokes\n\"Don't leave again\"",
+  "Manager says they\ndidn't fully unplug",
+
+  // New members
+  "New member\nintroduces themselves",
+  "Awkward silence after\na new member speaks",
+  "Someone mixes up\na new member's name",
+  "New member nods along\nbut looks confused",
+  "Someone says\n\"You'll get used to it\"",
+
+  // Classic meeting moments
+  "\"Can you see\nmy screen?\"",
+  "Someone is\non mute",
+  "Echo or audio\nfeedback",
+  "Mystery background\nnoise",
+  "Someone joins\nlate",
+  "Someone's camera\nfreezes mid-face",
+  "\"Let's take this\noffline\"",
+  "\"Great question\"",
+  "\"Moving on...\"",
+  "Meeting runs\nover time",
+  "Awkward crosstalk /\npeople talking at once",
+  "Someone says\n\"Can you repeat that?\"",
+  "Uncomfortable\nsilence > 5 seconds",
+
+  // Monthly review vibes
+  "Someone says\n\"Compared to last month...\"",
+  "A metric is\ncelebrated 📈",
+  "A metric\nlooked better in theory",
+  "Someone takes\ncredit for a team win",
+  "\"We need to do\nbetter next month\"",
+  "\"It's a work\nin progress\"",
+  "Someone throws out\na very specific number",
+  "Deadline gets\npushed to next month",
+  "\"Lessons learned\"",
+  "A blocker is mentioned\nthat surprises everyone",
+
+  // People behaviors
+  "Someone multitasks\n(typing sounds)",
+  "Obvious coffee\nor snack on screen",
+  "Pet or kid\nmakes an appearance",
+  "Someone uses\na buzzword",
+  "\"Synergy\"\nis said unironically",
+  "Someone gives\na thumbs up 👍",
+  "Nervous laughter\nat something serious",
+  "\"Happy to chat\nabout it after\"",
+  "Side conversation\nin the chat",
+  "Someone visibly\nchecks their phone"
+];
+
+let boardSquares = [];
+let marked = new Set();
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function buildBoard() {
+  const board = document.getElementById('board');
+  board.innerHTML = '';
+
+  const letters = ['B','I','N','G','O'];
+  letters.forEach((l, i) => {
+    const hdr = document.createElement('div');
+    hdr.className = 'col-header';
+    hdr.textContent = l;
+    board.appendChild(hdr);
+  });
+
+  const shuffled = shuffle(allSquares).slice(0, 24);
+  boardSquares = [];
+
+  let idx = 0;
+  for (let i = 0; i < 25; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'cell';
+    cell.dataset.index = i;
+
+    if (i === 12) {
+      cell.className = 'cell free-space marked';
+      cell.innerHTML = '⭐<br>FREE<br>SPACE';
+      marked.add(12);
+    } else {
+      cell.textContent = shuffled[idx];
+      cell.addEventListener('click', () => toggleCell(cell, i));
+      idx++;
+    }
+
+    boardSquares.push(cell);
+    board.appendChild(cell);
+  }
+
+  updateScore();
+}
+
+function toggleCell(cell, index) {
+  if (index === 12) return;
+  if (marked.has(index)) {
+    marked.delete(index);
+    cell.classList.remove('marked');
+  } else {
+    marked.add(index);
+    cell.classList.add('marked');
+  }
+  updateScore();
+  checkBingo();
+}
+
+function updateScore() {
+  document.getElementById('score').textContent = `${marked.size} / 25 marked`;
+}
+
+function checkBingo() {
+  const lines = [
+    [0,1,2,3,4],[5,6,7,8,9],[10,11,12,13,14],[15,16,17,18,19],[20,21,22,23,24],
+    [0,5,10,15,20],[1,6,11,16,21],[2,7,12,17,22],[3,8,13,18,23],[4,9,14,19,24],
+    [0,6,12,18,24],[4,8,12,16,20]
+  ];
+
+  for (const line of lines) {
+    if (line.every(i => marked.has(i))) {
+      line.forEach(i => {
+        boardSquares[i].style.boxShadow = '0 0 25px rgba(255,196,9,0.5)';
+      });
+      setTimeout(() => {
+        document.getElementById('bingoAlert').classList.add('show');
+      }, 300);
+      return;
+    }
+  }
+}
+
+function closeBingo() {
+  document.getElementById('bingoAlert').classList.remove('show');
+}
+
+function shuffleBoard() {
+  marked = new Set();
+  buildBoard();
+}
+
+function resetBoard() {
+  marked = new Set();
+  marked.add(12);
+  boardSquares.forEach((cell, i) => {
+    if (i !== 12) {
+      cell.classList.remove('marked');
+      cell.style.boxShadow = '';
+    }
+  });
+  updateScore();
+}
+
+buildBoard();
+</script>
+
+</body>
+</html>
