@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Renters | Renter Help Center</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <svg width="86" height="50" viewBox="0 0 86 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11.9669 42.6648C11.9669 40.3028 10.473 38.7744 8.29661 38.7744H0.76416V41.0568H7.6105C8.34825 41.0568 9.50099 41.0568 9.50099 42.6592C9.50099 44.2617 8.3501 44.2506 7.6105 44.2506H0.76416V49.3766H3.23932V46.544H7.20843L8.75586 49.3821H11.6626L9.89385 46.2328C11.1702 45.6659 11.9669 44.3914 11.9669 42.6648Z" fill="#1036CE"/>
+          <path d="M25.645 40.9381V38.7725H15.5156V49.3821H25.645V47.2127H17.976V45.06H25.645V43.0945H17.976V40.9381H25.645Z" fill="#1036CE"/>
+          <path d="M39.1625 38.7725V46.7384L32.6168 38.7725H29.2729V49.382H31.7389V41.4272L38.2717 49.3932H41.6285V38.7725H39.1625Z" fill="#1036CE"/>
+          <path d="M45.1714 38.7725V41.0567H49.8303V49.3765H52.2999V41.0567H56.9533V38.7725H45.1714Z" fill="#1036CE"/>
+          <path d="M70.6311 40.9381V38.7725H60.498V49.3821H70.6311V47.2127H62.9584V45.06H70.6311V43.0945H62.9584V40.9381H70.6311Z" fill="#FF5833"/>
+          <path d="M85.458 42.6648C85.458 40.3028 83.964 38.7744 81.7877 38.7744H74.2607V41.0568H81.1071C81.8448 41.0568 82.992 41.0568 82.992 42.6592C82.992 44.2617 81.8448 44.2506 81.1071 44.2506H74.2607V49.3766H76.7211V46.544H80.7032L82.2506 49.3821H85.1537L83.3849 46.2328C84.6667 45.6659 85.458 44.3914 85.458 42.6648Z" fill="#FF5833"/>
+          <path d="M59.3473 30.8492H52.8735C52.8207 30.8493 52.7685 30.8388 52.7197 30.8185C52.671 30.7981 52.6267 30.7683 52.5895 30.7307L50.7451 28.8781L44.3691 22.459C44.2744 22.3633 44.2212 22.2337 44.2212 22.0987C44.2212 21.9637 44.2744 21.8342 44.3691 21.7384L47.6595 18.4334C47.7348 18.3579 47.837 18.3154 47.9435 18.3154C48.05 18.3154 48.1521 18.3579 48.2275 18.4334L59.7162 29.973C59.7901 30.0445 59.8407 30.1368 59.8614 30.2377C59.882 30.3387 59.8716 30.4436 59.8317 30.5385C59.7917 30.6334 59.724 30.7139 59.6375 30.7694C59.5511 30.8249 59.4499 30.8527 59.3473 30.8492Z" fill="#FF5833"/>
+          <path d="M47.9358 3.56322V6.26609H29.8849L28.6141 4.98968C28.5668 4.94265 28.5293 4.88668 28.5037 4.82499C28.478 4.7633 28.4648 4.69713 28.4648 4.63029C28.4648 4.56345 28.478 4.49727 28.5037 4.43558C28.5293 4.37389 28.5668 4.31792 28.6141 4.27089L32.1959 0.671387H45.0752C45.4521 0.672601 45.825 0.748364 46.1728 0.894349C46.5205 1.04034 46.8362 1.25369 47.1018 1.52222C47.3674 1.79075 47.5778 2.1092 47.7209 2.4594C47.864 2.8096 47.9371 3.18467 47.9358 3.56322Z" fill="#FF5833"/>
+          <path d="M47.6887 25.8142L44.3688 22.4593C44.3215 22.4121 44.2839 22.3559 44.2583 22.2941C44.2326 22.2323 44.2194 22.1659 44.2194 22.0989C44.2194 22.0319 44.2326 21.9656 44.2583 21.9038C44.2839 21.8419 44.3215 21.7858 44.3688 21.7386L52.355 13.7152C52.4023 13.6682 52.4398 13.6122 52.4655 13.5505C52.4911 13.4888 52.5043 13.4227 52.5043 13.3558C52.5043 13.289 52.4911 13.2228 52.4655 13.1611C52.4398 13.0994 52.4023 13.0434 52.355 12.9964L40.6506 1.25679C40.6027 1.20886 40.5701 1.14773 40.5569 1.08116C40.5437 1.01459 40.5504 0.945571 40.5763 0.882862C40.6022 0.820153 40.646 0.766577 40.7023 0.728928C40.7585 0.691278 40.8246 0.671251 40.8922 0.671388H46.0288C46.6351 0.67103 47.2355 0.790785 47.7957 1.0238C48.3559 1.25681 48.8648 1.5985 49.2933 2.02931L60.2121 13.0112C60.3067 13.1067 60.3598 13.2359 60.3598 13.3706C60.3598 13.5053 60.3067 13.6346 60.2121 13.73L48.1757 25.8216C48.1433 25.8534 48.105 25.8785 48.0629 25.8953C48.0209 25.9121 47.9759 25.9204 47.9307 25.9198C47.8854 25.9191 47.8407 25.9094 47.7992 25.8913C47.7577 25.8732 47.7201 25.847 47.6887 25.8142Z" fill="#FF5833"/>
+          <path d="M44.4666 13.0112L32.1959 0.671387L28.6234 4.26163C28.5761 4.30866 28.5385 4.36463 28.5129 4.42632C28.4873 4.48801 28.4741 4.55419 28.4741 4.62103C28.4741 4.68787 28.4873 4.75404 28.5129 4.81573C28.5385 4.87742 28.5761 4.93339 28.6234 4.98042L36.6022 13.0112C36.6968 13.1067 36.7499 13.2359 36.7499 13.3706C36.7499 13.5053 36.6968 13.6346 36.6022 13.73L31.9045 18.4485L31.3955 18.9579L29.4294 20.9253L28.6123 21.746C28.565 21.7932 28.5274 21.8493 28.5017 21.9112C28.4761 21.973 28.4629 22.0393 28.4629 22.1063C28.4629 22.1733 28.4761 22.2397 28.5017 22.3015C28.5274 22.3633 28.565 22.4195 28.6123 22.4667L29.754 23.6134L32.183 26.0569L34.992 28.8746L36.8364 30.7272C36.8733 30.7647 36.9172 30.7945 36.9656 30.8149C37.0141 30.8352 37.0661 30.8457 37.1186 30.8457H43.5942C43.6947 30.8463 43.793 30.8168 43.8767 30.7609C43.9604 30.7051 44.0256 30.6254 44.064 30.5322C44.1024 30.4389 44.1122 30.3363 44.0923 30.2374C44.0724 30.1385 44.0235 30.0478 43.952 29.9769L36.4786 22.4592C36.3839 22.3635 36.3307 22.2339 36.3307 22.0989C36.3307 21.9639 36.3839 21.8344 36.4786 21.7386L44.4666 13.7152C44.5568 13.6204 44.6071 13.4943 44.6071 13.3632C44.6071 13.2321 44.5568 13.106 44.4666 13.0112Z" fill="#1036CE"/>
+        </svg>
+      </a>
+      <nav class="header-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="for-renters.html" class="nav-link active">For Renters</a>
+        <a href="for-owners.html" class="nav-link">For Owners</a>
+        <a href="faq.html" class="nav-link">FAQ</a>
+        <a href="safety.html" class="nav-link">Safety</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <button class="lang-toggle" onclick="toggleLang()">العربية</button>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="for-renters.html" class="nav-link active">For Renters</a>
+      <a href="for-owners.html" class="nav-link">For Owners</a>
+      <a href="faq.html" class="nav-link">FAQ</a>
+      <a href="safety.html" class="nav-link">Safety</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="page-layout">
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-title">Getting Started</div>
+          <a href="#getting-started" class="sidebar-link active">Account & Verification</a>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-title">Booking</div>
+          <a href="#booking" class="sidebar-link">Search & Filters</a>
+          <a href="#making-booking" class="sidebar-link">Making a Booking</a>
+          <a href="#payments" class="sidebar-link">Payment Methods</a>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-title">Your Rentals</div>
+          <a href="#managing" class="sidebar-link">Managing Rentals</a>
+          <a href="#during-rental" class="sidebar-link">During Your Rental</a>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-title">Cancellations</div>
+          <a href="#cancellations" class="sidebar-link">Policies & Refunds</a>
+          <a href="#disputes" class="sidebar-link">Disputes</a>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-title">Reviews & Account</div>
+          <a href="#reviews" class="sidebar-link">Ratings & Reviews</a>
+          <a href="#security" class="sidebar-link">Account Security</a>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-title">Category Guides</div>
+          <a href="#cars" class="sidebar-link">Cars & Vehicles</a>
+          <a href="#properties" class="sidebar-link">Properties</a>
+          <a href="#equipment" class="sidebar-link">Equipment & Tools</a>
+          <a href="#events" class="sidebar-link">Events</a>
+          <a href="#fashion" class="sidebar-link">Fashion & Clothing</a>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="content">
+        <div class="breadcrumb">
+          <span><a href="index.html">Help Center</a></span>
+          <span>For Renters</span>
+        </div>
+
+        <h1>For Renters</h1>
+        <p class="subtitle">Everything you need to know about renting on Renter</p>
+
+        <!-- ====== GETTING STARTED ====== -->
+        <h2 id="getting-started">Getting Started</h2>
+
+        <h3>Creating Your Account</h3>
+        <ol class="steps">
+          <li>Download the Renter app or visit renter.net</li>
+          <li>Tap/click "Sign Up" or "إنشاء حساب"</li>
+          <li>Enter your mobile number to receive OTP</li>
+          <li>Complete your profile with name and email</li>
+          <li>Verify your identity (required for certain rentals)</li>
+        </ol>
+
+        <h3 id="identity">Identity Verification</h3>
+        <p>Some items require verified accounts. Verification includes:</p>
+        <ul>
+          <li>National ID or Iqama upload</li>
+          <li>Selfie verification</li>
+          <li>Phone number confirmation</li>
+        </ul>
+        <div class="info-box blue">
+          <span class="info-box-icon">&#9432;</span>
+          <div>Verification typically takes 1-24 hours. Ensure your documents are clear and not expired.</div>
+        </div>
+
+        <h3>Browsing Items</h3>
+        <p>Find what you need:</p>
+        <ul>
+          <li>Browse by category: Cars, Properties, Equipment, Events, Fashion, Services</li>
+          <li>Use search with filters for location, price range, dates</li>
+          <li>Save favorites by tapping the heart icon</li>
+          <li>View owner ratings and reviews before booking</li>
+        </ul>
+
+        <!-- ====== SEARCHING & BOOKING ====== -->
+        <h2 id="booking">Searching & Booking</h2>
+
+        <h3>Using Filters</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Filter</th><th>Options</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Location</td><td>City, District, Nearby</td><td>Uses GPS for nearby</td></tr>
+              <tr><td>Price Range</td><td>Min - Max SAR</td><td>Daily/hourly rates</td></tr>
+              <tr><td>Dates</td><td>Start - End date</td><td>Calendar picker</td></tr>
+              <tr><td>Category</td><td>All categories</td><td>Multi-select available</td></tr>
+              <tr><td>Rating</td><td>4+ stars, etc.</td><td>Based on reviews</td></tr>
+              <tr><td>Delivery</td><td>Pickup / Delivery</td><td>If owner offers</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Understanding Listings</h3>
+        <p>Each listing shows:</p>
+        <ul>
+          <li>Item photos and description</li>
+          <li>Daily/hourly/weekly pricing</li>
+          <li>Security deposit amount (if applicable)</li>
+          <li>Owner profile, rating, and response time</li>
+          <li>Pickup location or delivery options</li>
+          <li>Cancellation policy</li>
+          <li>Reviews from previous renters</li>
+        </ul>
+
+        <h3 id="making-booking">Making a Booking</h3>
+        <ol class="steps">
+          <li>Select your rental dates/times</li>
+          <li>Review total cost including any fees</li>
+          <li>Add any message to the owner (optional)</li>
+          <li>Select payment method</li>
+          <li>Confirm booking request</li>
+          <li>Wait for owner approval (instant or up to 24 hours)</li>
+        </ol>
+
+        <h3 id="payments">Payment Methods</h3>
+        <p>Accepted payment options:</p>
+        <ul>
+          <li>Credit/Debit cards (Visa, Mastercard, Mada)</li>
+          <li>Apple Pay</li>
+          <li>STC Pay</li>
+          <li>Renter Wallet (preloaded balance)</li>
+        </ul>
+        <div class="info-box green">
+          <span class="info-box-icon">&#128274;</span>
+          <div>All payments are secured through our payment gateway. Funds are held until rental completion.</div>
+        </div>
+
+        <!-- ====== MANAGING RENTALS ====== -->
+        <h2 id="managing">Managing Your Rentals</h2>
+
+        <h3>Your Dashboard</h3>
+        <p>Access your rentals from the "My Rentals" section:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Status</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Pending</strong></td><td>Awaiting owner approval</td></tr>
+              <tr><td><strong>Confirmed</strong></td><td>Approved and scheduled</td></tr>
+              <tr><td><strong>Active</strong></td><td>Currently in your possession</td></tr>
+              <tr><td><strong>Completed</strong></td><td>Past rentals</td></tr>
+              <tr><td><strong>Cancelled</strong></td><td>Declined or cancelled bookings</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Communication with Owners</h3>
+        <ul>
+          <li>Use in-app chat for all communications</li>
+          <li>Messages are saved for your protection</li>
+          <li>Coordinate pickup/delivery times through chat</li>
+          <li>Report any issues immediately through chat</li>
+        </ul>
+
+        <h3 id="during-rental">During Your Rental</h3>
+        <ul>
+          <li>Take photos/videos at pickup to document condition</li>
+          <li>Report any pre-existing damage immediately</li>
+          <li>Use items according to agreed terms</li>
+          <li>Contact support if issues arise: support@renter.net</li>
+        </ul>
+
+        <h3>Returning Items</h3>
+        <ol class="steps">
+          <li>Return on agreed date and time</li>
+          <li>Return in same condition as received</li>
+          <li>Complete return confirmation with owner</li>
+          <li>Take photos at return for your records</li>
+          <li>Security deposit released after inspection</li>
+        </ol>
+
+        <!-- ====== CANCELLATIONS & REFUNDS ====== -->
+        <h2 id="cancellations">Cancellations & Refunds</h2>
+
+        <h3>Cancellation Policies</h3>
+        <p>Each listing has one of these cancellation policies:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Policy</th><th>Timeframe</th><th>Refund</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Flexible</strong></td><td>24+ hours before</td><td style="color:#059669;font-weight:600;">100% refund</td></tr>
+              <tr><td><strong>Flexible</strong></td><td>Less than 24 hours</td><td style="color:#eab308;font-weight:600;">50% refund</td></tr>
+              <tr><td><strong>Moderate</strong></td><td>3+ days before</td><td style="color:#059669;font-weight:600;">100% refund</td></tr>
+              <tr><td><strong>Moderate</strong></td><td>1-3 days before</td><td style="color:#eab308;font-weight:600;">50% refund</td></tr>
+              <tr><td><strong>Moderate</strong></td><td>Less than 24 hours</td><td style="color:#ef4444;font-weight:600;">No refund</td></tr>
+              <tr><td><strong>Strict</strong></td><td>7+ days before</td><td style="color:#eab308;font-weight:600;">50% refund</td></tr>
+              <tr><td><strong>Strict</strong></td><td>Less than 7 days</td><td style="color:#ef4444;font-weight:600;">No refund</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>How to Cancel</h3>
+        <ol class="steps">
+          <li>Go to "My Rentals" &gt; select the booking</li>
+          <li>Tap "Cancel Booking"</li>
+          <li>Select cancellation reason</li>
+          <li>Confirm cancellation</li>
+          <li>Refund processed within 5-7 business days</li>
+        </ol>
+
+        <h3 id="disputes">Dispute Resolution</h3>
+        <p>If you have a dispute with an owner:</p>
+        <ol class="steps">
+          <li>First, try to resolve directly through in-app chat</li>
+          <li>If unresolved, open a support ticket within 48 hours of rental end</li>
+          <li>Provide photos, screenshots, and documentation</li>
+          <li>Our team will review and mediate</li>
+          <li>Resolution typically within 3-5 business days</li>
+        </ol>
+
+        <!-- ====== RATINGS & REVIEWS ====== -->
+        <h2 id="reviews">Ratings & Reviews</h2>
+
+        <h3>Rating System</h3>
+        <p>After each rental, you can rate:</p>
+        <ul>
+          <li>Overall experience (1-5 stars)</li>
+          <li>Item accuracy (matched description)</li>
+          <li>Communication (owner responsiveness)</li>
+          <li>Item condition</li>
+        </ul>
+
+        <h3>Writing Good Reviews</h3>
+        <p>Help the community with useful reviews:</p>
+        <ul>
+          <li>Be specific about what you liked or didn't like</li>
+          <li>Mention if item matched the photos/description</li>
+          <li>Note the owner's communication and flexibility</li>
+          <li>Keep reviews respectful and factual</li>
+        </ul>
+
+        <!-- ====== ACCOUNT & SECURITY ====== -->
+        <h2 id="security">Account & Security</h2>
+
+        <h3>Profile Management</h3>
+        <ul>
+          <li>Update personal information in Settings &gt; Profile</li>
+          <li>Add/update payment methods in Settings &gt; Payment</li>
+          <li>Manage notification preferences</li>
+          <li>View and download your rental history</li>
+        </ul>
+
+        <h3>Security Best Practices</h3>
+        <ul>
+          <li>Never share login credentials</li>
+          <li>Use strong, unique password</li>
+          <li>Enable two-factor authentication (2FA)</li>
+          <li>Keep all transactions within the platform</li>
+          <li>Report suspicious activity immediately</li>
+        </ul>
+        <div class="info-box yellow">
+          <span class="info-box-icon">&#9888;</span>
+          <div>Never pay outside the Renter platform. All legitimate transactions are processed securely through our payment system.</div>
+        </div>
+
+        <!-- ====== CATEGORY GUIDES ====== -->
+        <h2 id="cars">Cars & Vehicles</h2>
+        <ul>
+          <li><strong>Requirements:</strong> Valid Saudi driving license, minimum age 21</li>
+          <li>Verify insurance coverage before pickup</li>
+          <li>Check mileage limits and fuel policy</li>
+          <li>Document car condition thoroughly at pickup</li>
+          <li>Return with same fuel level as received</li>
+        </ul>
+
+        <h2 id="properties">Properties</h2>
+        <h3>Short-Term Rentals (Daily/Weekly)</h3>
+        <ul>
+          <li>Popular for events, tourism, temporary stays</li>
+          <li>Include amenities list (WiFi, parking, kitchen)</li>
+          <li>Specify check-in/check-out times</li>
+          <li>House rules clearly stated</li>
+        </ul>
+        <h3>Long-Term Rentals (Monthly+)</h3>
+        <ul>
+          <li>Utilities included or separate billing</li>
+          <li>Security deposit typically 1-2 months rent</li>
+          <li>Lease agreement through platform</li>
+          <li>Maintenance responsibility clearly defined</li>
+        </ul>
+
+        <h2 id="equipment">Equipment & Tools</h2>
+        <p>Available categories:</p>
+        <ul>
+          <li>Construction equipment (generators, compressors)</li>
+          <li>Photography/Video gear (cameras, lighting)</li>
+          <li>Audio equipment (speakers, microphones)</li>
+          <li>Garden/Outdoor tools</li>
+          <li>Sports equipment</li>
+        </ul>
+        <div class="info-box blue">
+          <span class="info-box-icon">&#9432;</span>
+          <div>Some equipment may require certifications to operate. Check listing details for any requirements.</div>
+        </div>
+
+        <h2 id="events">Events & Entertainment</h2>
+        <p>Items available for event rentals:</p>
+        <ul>
+          <li>Tables, chairs, and linens</li>
+          <li>Tents and canopies</li>
+          <li>Decorations and lighting</li>
+          <li>Catering equipment</li>
+          <li>Entertainment (games, inflatables)</li>
+        </ul>
+        <div class="info-box orange">
+          <span class="info-box-icon">&#128197;</span>
+          <div>Book early for weekends and holidays. Confirm delivery/setup arrangements in advance.</div>
+        </div>
+
+        <h2 id="fashion">Fashion & Clothing</h2>
+        <p>Popular rental categories:</p>
+        <ul>
+          <li>Wedding dresses and formal wear</li>
+          <li>Traditional/cultural attire</li>
+          <li>Designer bags and accessories</li>
+          <li>Costumes for events</li>
+        </ul>
+        <p>Guidelines:</p>
+        <ul>
+          <li>Size charts must be accurate</li>
+          <li>Items cleaned before and after rental</li>
+          <li>Note any alterations policy</li>
+          <li>Damage/stain policy clearly communicated</li>
+        </ul>
+
+        <!-- Feedback -->
+        <div class="feedback-widget">
+          <p>Was this article helpful?</p>
+          <div class="feedback-btns">
+            <button class="feedback-btn" onclick="sendFeedback(true)">Yes, it helped</button>
+            <button class="feedback-btn" onclick="sendFeedback(false)">No, I need more help</button>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-col">
+        <h4>Rentals</h4>
+        <a href="#">Properties</a>
+        <a href="#">Cars & Vehicles</a>
+        <a href="#">Events & Entertainment</a>
+        <a href="#">Equipment & Tools</a>
+        <a href="#">Fashion & Clothing</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="index.html">Help Center</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact Support</a>
+        <a href="safety.html">Safety Center</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About Us</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Cancellation Policy</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>support@renter.net</p>
+        <p>011 500 3615</p>
+        <p>WhatsApp: 0509103111</p>
+        <p>Saudi Arabia - Riyadh</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>Renter &copy; 2026, Inc. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
