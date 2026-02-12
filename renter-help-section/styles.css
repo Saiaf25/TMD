@@ -19,6 +19,19 @@ html[dir="rtl"] .sidebar { border-right: none; border-left: 3px solid #e5e7eb; }
 html[dir="rtl"] .sidebar-link.active { border-right: none; border-left: 3px solid #1036CE; }
 html[dir="rtl"] .breadcrumb span::after { content: ' / '; }
 html[dir="rtl"] .card-link { direction: ltr; }
+html[dir="rtl"] .steps li { padding-left: 0; padding-right: 40px; }
+html[dir="rtl"] .steps li::before { left: auto; right: 0; }
+html[dir="rtl"] .content ul, html[dir="rtl"] .content ol { margin: 0 20px 16px 0; }
+html[dir="rtl"] .info-box.blue { border-left: none; border-right: 4px solid #1036CE; }
+html[dir="rtl"] .info-box.orange { border-left: none; border-right: 4px solid #FF5833; }
+html[dir="rtl"] .info-box.green { border-left: none; border-right: 4px solid #059669; }
+html[dir="rtl"] .info-box.yellow { border-left: none; border-right: 4px solid #eab308; }
+html[dir="rtl"] .accordion-btn { text-align: right; }
+html[dir="rtl"] th { text-align: right; }
+html[dir="rtl"] .sidebar-link { border-left: none; border-right: 3px solid transparent; margin-left: 0; margin-right: -15px; padding-left: 12px; padding-right: 15px; }
+html[dir="rtl"] .sidebar-link.active { border-right-color: #1036CE; border-left-color: transparent; }
+html[dir="rtl"] .sidebar-link.active-orange { border-right-color: #FF5833; border-left-color: transparent; }
+html[dir="rtl"] .suggestion-item { text-align: right; }
 
 /* ===== HEADER ===== */
 .header {
